@@ -20,3 +20,14 @@ $wc.DownloadFile('https://raw.githubusercontent.com/OTRF/Blacksmith/master/resou
 
 # Set Run Key
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "BgInfo" -Value "C:\ProgramData\bginfo.exe C:\ProgramData\OTRWallPaper.bgi /silent /timer:0 /nolicprompt" -PropertyType "String" -force
+
+#download security scene recommended Sysmon template
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/SwiftOnSecurity/sysmon-config/master/sysmonconfig-export.xml -UseBasicParsing -OutFile C:\ProgramData\sysmonconfig-export.xml
+
+#download Sysmon, unzip it and install it with the downloaded template
+Invoke-WebRequest -UseBasicParsing -Uri https://download.sysinternals.com/files/Sysmon.zip -OutFile C:\ProgramData\sysmon.zip
+
+Expand-Archive C:\ProgramData\Sysmon.zip
+
+C:\ProgramData\Sysmon\Sysmon64.exe -accepteula -i C:\ProgramData\sysmonconfig-export.xml
+
