@@ -32,3 +32,6 @@ Expand-Archive C:\ProgramData\Sysmon.zip -DestinationPath C:\ProgramData
 
 C:\ProgramData\Sysmon64.exe -accepteula -i C:\ProgramData\sysmonconfig-export.xml
 
+#install and enable IIS
+Install-WindowsFeature -name Web-Server -IncludeManagementTools
+
