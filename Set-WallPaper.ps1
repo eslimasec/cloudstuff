@@ -1,6 +1,7 @@
 # Author: Roberto Rodriguez (@Cyb3rWard0g)
 # License: GPL-3.0
-# modified to suit needs
+# orinal available here https://github.com/OTRF/Blacksmith/blob/master/resources/scripts/powershell/misc/Set-WallPaper.ps1
+# modified version to suit needs
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
@@ -13,7 +14,7 @@ $wc = new-object System.Net.WebClient
 $wc.DownloadFile('http://live.sysinternals.com/bginfo.exe', 'C:\ProgramData\bginfo.exe')
 
 # Copy Wallpaper
-$wc.DownloadFile('https://raw.github.com/eslimasec/cloudstuff/otr.jpg', 'C:\ProgramData\otr.jpg')
+$wc.DownloadFile('https://raw.github.com/eslimasec/cloudstuff/main/otr.jpg', 'C:\ProgramData\otr.jpg')
 
 # Copy BGInfo config
 $wc.DownloadFile('https://raw.githubusercontent.com/OTRF/Blacksmith/master/resources/configs/bginfo/OTRWallPaper.bgi', 'C:\ProgramData\OTRWallPaper.bgi')
@@ -27,7 +28,7 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/SwiftOnSecurity/sysmon-
 #download Sysmon, unzip it and install it with the downloaded template
 Invoke-WebRequest -UseBasicParsing -Uri https://download.sysinternals.com/files/Sysmon.zip -OutFile C:\ProgramData\sysmon.zip
 
-Expand-Archive C:\ProgramData\Sysmon.zip
+Expand-Archive C:\ProgramData\Sysmon.zip -DestinationPath C:\ProgramData
 
-C:\ProgramData\Sysmon\Sysmon64.exe -accepteula -i C:\ProgramData\sysmonconfig-export.xml
+C:\ProgramData\Sysmon64.exe -accepteula -i C:\ProgramData\sysmonconfig-export.xml
 
